@@ -1,7 +1,5 @@
 import './styles.css';
 
-import { Component } from 'react';
-
 export const TextInput = ({handleChange, searchValue}) => {
     return (
         <input 
