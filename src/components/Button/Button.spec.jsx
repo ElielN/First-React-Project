@@ -2,11 +2,23 @@ const { render, screen, fireEvent } = require("@testing-library/react");
 import userEvent from '@testing-library/user-event';
 import { Button } from '.';
 
+/*
+beforeAll()      beforeEach()
+afterAll()       afterEach()
+*/
+
+//Describe para agrupar uma sequência de testes
 describe('<Button />', () => {
-    it('should render the button with the text "Load more', () => {
+    
+    it('should render the button with the text "Load more"', () => {
         render(<Button text="Load more" />);
+        
+        //Espera-se duas acertivas
         expect.assertions(1);
+
         const button = screen.getByRole('button', { name: /load more/i });
+        
+        //Espera-se que button com este name esteja presente no documento
         expect(button).toBeInTheDocument();
     });
 
@@ -32,3 +44,5 @@ describe('<Button />', () => {
     });
 
 });
+
+//npm test -- --watchAll="false" --coverage

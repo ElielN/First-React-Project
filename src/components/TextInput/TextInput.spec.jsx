@@ -22,7 +22,7 @@ describe('<TextInput />', () => {
         
         const value = 'o valor';
 
-        userEvent.type(input, value); //COmo se o usuário estivesse digitando o value no nosso campo de input
+        userEvent.type(input, value); //Como se o usuário estivesse digitando o value no nosso campo de input
         
         expect(input.value).toBe(value);
         expect(fn).toHaveBeenCalledTimes(value.length);
