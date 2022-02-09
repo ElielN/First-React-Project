@@ -112,6 +112,19 @@ afterEach(() => server.resetHandlers());
     
         userEvent.type(search, 'post does not exist');
         expect(screen.getByText('Não existem posts =(')).toBeInTheDocument();
+    });
+
+    it('should load more posts', async () => {
+        render(<Home />);
+        const noMorePosts = screen.getByText('Não existem posts =(');
+        //expect.assertions(3); //Aqui é importante usar pois estamos testando uma função async, pode ser que não execute na ordem esperada
+        await waitForElementToBeRemoved(noMorePosts);
+
+        const button = screen.getByRole('button', {name:/load more posts/i });
         
+        userEvent.click(button);
+        
+        expect(screen.getByRole('heading', {name: 'title3 3'})).toBeInTheDocument();
+        expect(button).toBeDisabled();
     });
 });
